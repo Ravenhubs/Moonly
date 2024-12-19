@@ -136,7 +136,7 @@ end)
 
 -- Rayfield Toggle
 local Toggle = Tab:CreateToggle({
-    Name = "Ronaldo mode(Away-team",
+    Name = "Ronaldo mode (Away-team)",
     CurrentValue = false, -- Initially off
     Flag = "ToggleTeleport",
     Callback = function(Value)
