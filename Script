@@ -76,3 +76,47 @@ local Button = Tab:CreateButton({
    end,
 })
 
+local button = Tab:CreateButton({
+Name = "ronaldo mode -instant goal when kick.(home team)",
+Callback = function()
+-- Replace these coordinates with your desired position
+local targetPosition = Vector3.new(-241.610962, 15.4354219, -48.842247, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+-- Function to teleport the football
+local function teleportFootball(football)
+    football.Position = targetPosition
+    football.AssemblyLinearVelocity = Vector3.zero -- Stops the football
+end
+
+-- Script to detect a kick
+local football = workspace:WaitForChild("Football") -- Replace with the football's path in your game
+
+football:GetPropertyChangedSignal("AssemblyLinearVelocity"):Connect(function()
+    local velocity = football.AssemblyLinearVelocity
+    if velocity.Magnitude > 10 then -- Adjust the magnitude threshold as needed
+        teleportFootball(football)
+     end
+   end)
+end
+local Button = Tab:CreateButton({
+Name = ronaldo mode (away)
+Callback = function()
+-- Replace these coordinates with your desired position
+local targetPosition = Vector3.new(319.472565, 15.2746372, -49.1536713, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+-- Function to teleport the football
+local function teleportFootball(football)
+    football.Position = targetPosition
+    football.AssemblyLinearVelocity = Vector3.zero -- Stops the football
+end
+
+-- Script to detect a kick
+local football = workspace:WaitForChild("Football") -- Replace with the football's path in your game
+
+football:GetPropertyChangedSignal("AssemblyLinearVelocity"):Connect(function()
+    local velocity = football.AssemblyLinearVelocity
+    if velocity.Magnitude > 10 then -- Adjust the magnitude threshold as needed
+        teleportFootball(football)
+    end
+end)
+end
