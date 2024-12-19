@@ -102,7 +102,41 @@ end)
 
 -- Rayfield Toggle
 local Toggle = Tab:CreateToggle({
-    Name = "Ronaldo mode (away)",
+    Name = "Ronaldo mode (Home-team)",
+    CurrentValue = false, -- Initially off
+    Flag = "ToggleTeleport",
+    Callback = function(Value)
+        teleportEnabled = Value -- Enable or disable the teleport functionality
+    end,
+})
+
+-- Replace these coordinates with your desired position
+local targetPosition = Vector3.new(319.472565, 15.2746372, -49.1536713, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+-- Function to teleport the football
+local function teleportFootball(football)
+    football.Position = targetPosition
+    football.AssemblyLinearVelocity = Vector3.zero -- Stops the football
+end
+
+-- Script to detect a kick
+local football = workspace:WaitForChild("Football") -- Replace with the football's path in your game
+
+-- Variable to track toggle state
+local teleportEnabled = false
+
+football:GetPropertyChangedSignal("AssemblyLinearVelocity"):Connect(function()
+    if teleportEnabled then -- Check if the teleport feature is enabled
+        local velocity = football.AssemblyLinearVelocity
+        if velocity.Magnitude > 10 then -- Adjust the magnitude threshold as needed
+            teleportFootball(football)
+        end
+    end
+end)
+
+-- Rayfield Toggle
+local Toggle = Tab:CreateToggle({
+    Name = "Ronaldo mode(Away-team",
     CurrentValue = false, -- Initially off
     Flag = "ToggleTeleport",
     Callback = function(Value)
