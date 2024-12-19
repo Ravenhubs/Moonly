@@ -76,18 +76,3 @@ local Button = Tab:CreateButton({
    end,
 })
 
--- Example of integrating Delta (add your Delta specific code here):
--- Assuming Delta provides some custom functions, you could call them here:
-
-local deltaButton = Tab:CreateButton({
-   Name = "Use Delta Feature",
-   Callback = function()
-       -- Example: if Delta has a feature to teleport or perform actions, add it here
-       if Delta then
-           Delta.Teleport(game.Workspace.SomePart.Position)  -- Example, adjust based on Delta's capabilities
-           print("Delta Teleport activated!")
-       else
-           warn("Delta not found or not loaded.")
-       end
-   end,
-})
